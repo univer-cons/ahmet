@@ -70,19 +70,20 @@
       filter: blur(0px) brightness(0.7); /* Размытие + затемнение */
       z-index: -1;
     }
+   
     form {
-  background: rgba(255, 255, 255, 0.6); /* Прозрачный белый */
-  backdrop-filter: blur(10px);          /* Эффект стекла */
-  -webkit-backdrop-filter: blur(10px);  /* Для Safari */
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  z-index: 1;
-  max-width: 400px;
-  width: 90%;
-}
-
+      background: rgba(255, 255, 255, 0.2); /* полупрозрачный белый */
+      backdrop-filter: blur(10px); /* Эффект стекла */
+      -webkit-backdrop-filter: blur(10px); /* Safari */
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      width: 90%;
+      color: #000;
     }
+
+    
     input, button {
       display: block;
       width: 100%;
