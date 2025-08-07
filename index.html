@@ -1,56 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0">
   <title>Ahmet Consulting — Регистрация</title>
-  <script type="module">
-    // Firebase CDN
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
-    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js";
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyDMGZ1XtGWi4Cbo5nhhB2eQkcXTVU3aYk0",
-      authDomain: "ahmet-consulting.firebaseapp.com",
-      projectId: "ahmet-consulting",
-      storageBucket: "ahmet-consulting.appspot.com",
-      messagingSenderId: "253579961791",
-      appId: "1:253579961791:web:738c1277d865069a22fdc5",
-      measurementId: "G-KHQYBLGMN5"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
-    async function handleSubmit(e) {
-      e.preventDefault();
-
-      const email = document.getElementById("email").value;
-      const name = document.getElementById("name").value;
-      const phone = document.getElementById("phone").value;
-
-      try {
-        await addDoc(collection(db, "registrations"), {
-          email,
-          name,
-          phone,
-          createdAt: new Date()
-        });
-
-        alert("✅ Регистрация прошла успешно!");
-        window.location.href = "admin.html"; // Перейти на вторую форму
-      } catch (err) {
-        alert("❌ Ошибка при регистрации: " + err.message);
-      }
-    }
-
-    window.addEventListener("DOMContentLoaded", () => {
-      document.getElementById("form").addEventListener("submit", handleSubmit);
-    });
-  </script>
-   <style>
-  * {
+  <!-- СТИЛИ ОБЕРНУТЫ ПРАВИЛЬНО -->
+  <style>
+    * {
       box-sizing: border-box;
     }
 
@@ -65,20 +23,21 @@
       background: none;
       overflow: hidden;
     }
+
     .background {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url('main/27.jpeg');  /* Здесь укажи путь к своему фото */
+      background-image: url('main/27.jpeg');  /* Убедись, что файл существует по этому пути */
       background-size: cover;
       background-position: center;
-      filter: blur(0px) brightness(0.7); /* Размытие + затемнение */
+      filter: blur(2px) brightness(0.7); /* Чуть-чуть размытие + затемнение */
       z-index: -1;
     }
-   
-   form {
+
+    form {
       background: rgba(255, 255, 255, 0.2); /* полупрозрачный белый */
       backdrop-filter: blur(10px); /* Эффект стекла */
       -webkit-backdrop-filter: blur(10px); /* Safari */
@@ -121,9 +80,54 @@
       background-color: #003c9e;
     }
   </style>
+
+  <!-- Firebase -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDMGZ1XtGWi4Cbo5nhhB2eQkcXTVU3aYk0",
+      authDomain: "ahmet-consulting.firebaseapp.com",
+      projectId: "ahmet-consulting",
+      storageBucket: "ahmet-consulting.appspot.com",
+      messagingSenderId: "253579961791",
+      appId: "1:253579961791:web:738c1277d865069a22fdc5",
+      measurementId: "G-KHQYBLGMN5"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    async function handleSubmit(e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+
+      try {
+        await addDoc(collection(db, "registrations"), {
+          email,
+          name,
+          phone,
+          createdAt: new Date()
+        });
+
+        alert("✅ Регистрация прошла успешно!");
+        window.location.href = "admin.html";
+      } catch (err) {
+        alert("❌ Ошибка при регистрации: " + err.message);
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("form").addEventListener("submit", handleSubmit);
+    });
+  </script>
 </head>
 <body>
-   <div class="background"></div>
+  <div class="background"></div>
   <form id="form">
     <h2>Kayıt</h2>
     <input type="email" id="email" placeholder="Email" required />
