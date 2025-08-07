@@ -52,35 +52,37 @@
   pointer-events: none; /* чтобы не мешал кликам */
 }
 
-      .emblem-wrapper {
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap');
+
+.emblem-wrapper {
   position: absolute;
   top: 20px;
-  left: 20px;
-  z-index: 10000;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
 }
 
 .emblem {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Georgia', serif;
 }
 
 .crown {
-  font-size: 24px;
+  font-size: 40px;
+  color: gold;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.8), 0 0 12px rgba(255, 215, 0, 0.5);
   margin-bottom: -10px;
-  color: gold;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
-.letters {
+.aac {
+  font-family: 'Cinzel', serif;
   font-size: 36px;
-  font-weight: bold;
   color: gold;
-  text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
-  letter-spacing: 2px;
+  letter-spacing: 15px;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.5),
+               0 0 8px rgba(255, 215, 0, 0.4);
 }
-
 
 
   </style>
@@ -88,10 +90,11 @@
 <body>
   <div class="emblem-wrapper">
   <div class="emblem">
-    <span class="crown">👑</span>
-    <span class="letters">A<span style="margin-left: 8px;">C</span></span>
+    <div class="crown">♕</div>
+    <div class="aac">A C</div>
   </div>
 </div>
+
 
   <div class="background"></div>
 
