@@ -52,10 +52,47 @@
   pointer-events: none; /* чтобы не мешал кликам */
 }
 
+      .emblem-wrapper {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10000;
+}
+
+.emblem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Georgia', serif;
+}
+
+.crown {
+  font-size: 24px;
+  margin-bottom: -10px;
+  color: gold;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.letters {
+  font-size: 36px;
+  font-weight: bold;
+  color: gold;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+  letter-spacing: 2px;
+}
+
+
 
   </style>
 </head>
 <body>
+  <div class="emblem-wrapper">
+  <div class="emblem">
+    <span class="crown">👑</span>
+    <span class="letters">A<span style="margin-left: 8px;">C</span></span>
+  </div>
+</div>
+
   <div class="background"></div>
 
   <form id="form">
