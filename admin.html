@@ -42,7 +42,7 @@
           createdAt: new Date()
         });
 
-        alert("✅ Данные успешно добавлены!");
+        alert("✅ Tamamdır!");
         document.getElementById("form").reset();
       } catch (err) {
         alert("❌ Ошибка при сохранении: " + err.message);
@@ -91,18 +91,18 @@
 </head>
 <body>
   <form id="form">
-    <h2>Дополнительные данные ученика</h2>
+    <h2>Oğrencı belgelerı</h2>
     <select id="gender" required>
-      <option value="">Выберите пол</option>
-      <option value="Мужской">Мужской</option>
-      <option value="Женский">Женский</option>
+      <option value="">Cınsıyetı seçınız</option>
+      <option value="Мужской">Erkek</option>
+      <option value="Женский">Kız</option>
     </select>
     <input type="date" id="birth" required />
-    <input type="text" id="city" placeholder="Город" required />
-    <input type="text" id="faculty" placeholder="Факультет" required />
-    <input type="text" id="group" placeholder="Группа" required />
-    <textarea id="notes" placeholder="Комментарии (необязательно)"></textarea>
-    <button type="submit">Сохранить</button>
+    <input type="text" id="city" placeholder="Şehırınız" required />
+    <input type="text" id="faculty" placeholder="Fakultenız" required />
+    <input type="text" id="group" placeholder="Bölüm" required />
+    <textarea id="notes" placeholder="Içerık bırakmak ıstersenız (önemlı değıl)"></textarea>
+    <button type="submit">Kayıt ol</button>
   </form>
 </body>
 </html>
