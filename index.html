@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Ahmet Consulting — Регистрация</title>
+  <script type="module">
+    // Firebase CDN
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDMGZ1XtGWi4Cbo5nhhB2eQkcXTVU3aYk0",
+      authDomain: "ahmet-consulting.firebaseapp.com",
+      projectId: "ahmet-consulting",
+      storageBucket: "ahmet-consulting.appspot.com",
+      messagingSenderId: "253579961791",
+      appId: "1:253579961791:web:738c1277d865069a22fdc5",
+      measurementId: "G-KHQYBLGMN5"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    async function handleSubmit(e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+
+      try {
+        await addDoc(collection(db, "registrations"), {
+          email,
+          name,
+          phone,
+          createdAt: new Date()
+        });
+
+        alert("✅ Регистрация прошла успешно!");
+        window.location.href = "admin.html"; // Перейти на вторую форму
+      } catch (err) {
+        alert("❌ Ошибка при регистрации: " + err.message);
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("form").addEventListener("submit", handleSubmit);
+    });
+  </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    form {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, button {
+      display: block;
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #0052D4;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #003c9e;
+    }
+  </style>
+</head>
+<body>
+  <form id="form">
+    <h2>Регистрация</h2>
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="text" id="name" placeholder="Имя" required />
+    <input type="tel" id="phone" placeholder="Телефон" required />
+    <button type="submit">Зарегистрироваться</button>
+  </form>
+</body>
+</html>
