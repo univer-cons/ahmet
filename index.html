@@ -49,14 +49,20 @@
       document.getElementById("form").addEventListener("submit", handleSubmit);
     });
   </script>
-  <style>
+  * {
+      box-sizing: border-box;
+    }
+
     body {
+      margin: 0;
+      padding: 0;
       font-family: Arial, sans-serif;
-      background: #f0f4f8;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      background: none;
+      overflow: hidden;
     }
     .background {
       position: fixed;
@@ -71,7 +77,7 @@
       z-index: -1;
     }
    
-    form {
+   form {
       background: rgba(255, 255, 255, 0.2); /* полупрозрачный белый */
       backdrop-filter: blur(10px); /* Эффект стекла */
       -webkit-backdrop-filter: blur(10px); /* Safari */
@@ -83,23 +89,35 @@
       color: #000;
     }
 
-    
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #000;
+    }
+
     input, button {
-      display: block;
       width: 100%;
-      margin-bottom: 15px;
       padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    button {
-      background: #0052D4;
-      color: white;
+      margin-bottom: 15px;
       border: none;
-      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
     }
+
+    input {
+      background: rgba(255,255,255,0.8);
+      color: #000;
+    }
+
+    button {
+      background-color: #0052D4;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
     button:hover {
-      background: #003c9e;
+      background-color: #003c9e;
     }
   </style>
 </head>
