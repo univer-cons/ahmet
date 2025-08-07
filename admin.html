@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Ahmet Consulting — Админ</title>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDMGZ1XtGWi4Cbo5nhhB2eQkcXTVU3aYk0",
+      authDomain: "ahmet-consulting.firebaseapp.com",
+      projectId: "ahmet-consulting",
+      storageBucket: "ahmet-consulting.appspot.com",
+      messagingSenderId: "253579961791",
+      appId: "1:253579961791:web:738c1277d865069a22fdc5",
+      measurementId: "G-KHQYBLGMN5"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    async function handleAdminSubmit(e) {
+      e.preventDefault();
+
+      const gender = document.getElementById("gender").value;
+      const birth = document.getElementById("birth").value;
+      const city = document.getElementById("city").value;
+      const faculty = document.getElementById("faculty").value;
+      const group = document.getElementById("group").value;
+      const notes = document.getElementById("notes").value;
+
+      try {
+        await addDoc(collection(db, "students"), {
+          gender,
+          birth,
+          city,
+          faculty,
+          group,
+          notes,
+          createdAt: new Date()
+        });
+
+        alert("✅ Данные успешно добавлены!");
+        document.getElementById("form").reset();
+      } catch (err) {
+        alert("❌ Ошибка при сохранении: " + err.message);
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("form").addEventListener("submit", handleAdminSubmit);
+    });
+  </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f3f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    form {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+    input, select, textarea, button {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    button {
+      background: #0052D4;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #003f9e;
+    }
+  </style>
+</head>
+<body>
+  <form id="form">
+    <h2>Дополнительные данные ученика</h2>
+    <select id="gender" required>
+      <option value="">Выберите пол</option>
+      <option value="Мужской">Мужской</option>
+      <option value="Женский">Женский</option>
+    </select>
+    <input type="date" id="birth" required />
+    <input type="text" id="city" placeholder="Город" required />
+    <input type="text" id="faculty" placeholder="Факультет" required />
+    <input type="text" id="group" placeholder="Группа" required />
+    <textarea id="notes" placeholder="Комментарии (необязательно)"></textarea>
+    <button type="submit">Сохранить</button>
+  </form>
+</body>
+</html>
