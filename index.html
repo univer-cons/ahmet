@@ -56,43 +56,39 @@
 
 .emblem-wrapper {
   position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 30px;
+  left: 30px;
   z-index: 1000;
-}
-
-.emblem {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .crown {
-  font-size: 40px;
+  font-size: 50px;
   color: gold;
   text-shadow: 0 0 8px rgba(255, 215, 0, 0.8), 0 0 12px rgba(255, 215, 0, 0.5);
+  margin-left: 5px; /* Подвинуть ближе к первой A */
   margin-bottom: -10px;
 }
 
 .aac {
   font-family: 'Cinzel', serif;
-  font-size: 36px;
+  font-size: 48px;
   color: gold;
-  letter-spacing: 15px;
+  letter-spacing: 18px;
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.5),
                0 0 8px rgba(255, 215, 0, 0.4);
 }
 
 
+
   </style>
 </head>
 <body>
-  <div class="emblem-wrapper">
-  <div class="emblem">
-    <div class="crown">♕</div>
-    <div class="aac">A C</div>
-  </div>
+ <div class="emblem-wrapper">
+  <div class="crown">♕</div>
+  <div class="aac">AC</div>
 </div>
 
 
