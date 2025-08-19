@@ -1,35 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- адаптив для телефона -->
+  <title>Ahmet Consulting</title>
   <style>
-    /* Основные стили для body */
     body {
       margin: 0;
+      padding: 0;
       height: 100vh;
-      font-family: Arial, sans-serif;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      color: white;
-      text-shadow: 1px 1px 3px black;
-
-      /* Задний фон */
-      background-image: url("https://univer-cons.github.io/ahmet/back.png"); /* путь к твоему PNG */
-      background-size: cover;       /* растянуть на весь экран */
-      background-position: center;  /* центрировать */
-      background-repeat: no-repeat; /* не повторять */
+      background: url("https://univer-cons.github.io/ahmet/back.png") no-repeat center center/cover; /* <-- сюда вставь своё фото */
+      font-family: Arial, sans-serif;
     }
 
-  
+    .buttons {
+      display: flex;
+      gap: 20px;
+    }
 
-  
-    
+    .btn {
+      padding: 12px 30px;
+      background-color: black;             /* фон кнопки */
+      color: white;                        /* текст */
+      border: 2px solid white;             /* белая граница */
+      outline: 1px solid black;            /* тонкая чёрная граница */
+      cursor: pointer;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      border-radius: 6px;
+    }
+
+    .btn:hover {
+      background-color: white;
+      color: black;
+      border: 2px solid black;
+      outline: none;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      color: black;
+      font-size: 18px;
+      font-style: italic;
+    }
+
+    /* 📱 Адаптив для телефона */
+    @media (max-width: 768px) {
+      .buttons {
+        flex-direction: column;
+        gap: 15px;
+        width: 80%;
+      }
+      .btn {
+        width: 100%;
+        font-size: 20px;
+        padding: 15px;
+      }
+    }
   </style>
 </head>
 <body>
+
+  <div class="buttons">
+    <button class="btn" onclick="location.href='info.html'">Info</button>
+    <button class="btn" onclick="location.href='randevu.html'">Randevu</button>
+    <button class="btn" onclick="location.href='kayit.html'">Kayıt Merkezi</button>
+  </div>
+
+  <div class="footer">© Ahmet Consulting</div>
 
 </body>
 </html>
