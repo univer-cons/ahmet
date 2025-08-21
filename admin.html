@@ -1,88 +1,126 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ahmet Consulting</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
       height: 100vh;
-      font-family: Arial, sans-serif;
-      background: url("https://univer-cons.github.io/ahmet/back.png") no-repeat center center;
+      background: url("https://univer-cons.github.io/ahmet/back.png") no-repeat center center fixed;
       background-size: cover;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end; /* выравниваем контент по низу */
-      align-items: flex-start; /* выравниваем контент по левому краю */
-      padding: 20px; /* немного отступов от края */
-      box-sizing: border-box;
+      font-family: Arial, sans-serif;
     }
 
-    .buttons {
+    /* Соцсети */
+    .social-bar {
+      position: fixed;
+      width: 100%;
       display: flex;
+      justify-content: center;
       gap: 20px;
-      margin-bottom: 10px; /* чуть выше футера */
-      flex-wrap: wrap; /* чтобы кнопки переносились на маленьких экранах */
+      padding: 10px;
+      z-index: 1000;
+    }
+
+    /* На компьютере — сверху */
+    .social-bar {
+      top: 0;
+    }
+
+    /* На телефоне — снизу */
+    @media (max-width: 600px) {
+      .social-bar {
+        top: auto;
+        bottom: 0;
+      }
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      font-weight: bold;
+      background: white;
+      padding: 6px 12px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .social-link:hover {
+      transform: scale(1.08);
+      background: #f5f5f5;
+    }
+
+    .social-link img {
+      width: 20px;
+      height: 20px;
+      margin-right: 6px;
+    }
+
+    /* Кнопки */
+    .buttons {
+      position: fixed;
+      bottom: 100px;   /* увеличил отступ */
+      left: 100px;     /* увеличил отступ */
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 1000;
     }
 
     .btn {
-      padding: 12px 30px;
-      background-color: black;
+      background: #000000cc; /* чёрный фон */
       color: white;
-      border: 2px solid white;
-      cursor: pointer;
-      font-size: 18px;
-      transition: all 0.3s ease;
+      border: 1px solid white; /* белая граница */
+      padding: 12px 40px; /* увеличена длина (40px) */
       border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.25s ease;
     }
 
+    /* Эффект hover */
     .btn:hover {
-      background-color: white;
+      background: white;
       color: black;
-      border: 2px solid black;
-    }
-
-    .footer {
-      color: black;
-      font-size: 18px;
-      font-style: italic;
-    }
-
-    /* 📱 Адаптив для телефона */
-    @media (max-width: 768px) {
-      body {
-        justify-content: center; /* на телефоне по центру */
-        align-items: center;
-        padding: 10px;
-      }
-      .buttons {
-        flex-direction: column;
-        gap: 15px;
-        width: 80%;
-        margin-bottom: 20px;
-      }
-      .btn {
-        width: 100%;
-        font-size: 20px;
-        padding: 15px;
-      }
-      .footer {
-        text-align: center;
-      }
+      border: 1px solid black;
+      transform: scale(1.05);
     }
   </style>
 </head>
 <body>
-
-  <div class="buttons">
-    <button class="btn" onclick="location.href='info.html'">Info</button>
-    <button class="btn" onclick="location.href='randevu.html'">Randevu</button>
-    <button class="btn" onclick="location.href='kayit.html'">Kayıt Merkezi</button>
+  <!-- Соцсети -->
+  <div class="social-bar">
+    <a href="https://wa.me/905000000000" target="_blank" class="social-link">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+      WhatsApp
+    </a>
+    <a href="https://instagram.com/твойлогин" target="_blank" class="social-link">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+      Instagram
+    </a>
+    <a href="mailto:yourmail@gmail.com" target="_blank" class="social-link">
+      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail">
+      Gmail
+    </a>
   </div>
 
-  <div class="footer">© Ahmet Consulting</div>
-
+  <!-- Три кнопки -->
+  <div class="buttons">
+    <button class="btn">Randevu</button>
+    <button class="btn">Kayit olmak</button>
+    <button class="btn">Info</button>
+  </div>
 </body>
 </html>
+
+
+
+
+
