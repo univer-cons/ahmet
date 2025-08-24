@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin</title>
   <style>
     body {
@@ -11,116 +11,39 @@
       background: url("https://univer-cons.github.io/ahmet/back.png") no-repeat center center fixed;
       background-size: cover;
       font-family: Arial, sans-serif;
+      overflow-x: hidden;
     }
 
-    /* Соцсети */
-    .social-bar {
+    /* Бургер */
+    .burger {
       position: fixed;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 10px;
-      z-index: 1000;
-    }
-
-    /* На компьютере — сверху */
-    .social-bar {
-      top: 0;
-    }
-
-    /* На телефоне — снизу */
-    @media (max-width: 600px) {
-      .social-bar {
-        top: auto;
-        bottom: 0;
-      }
-    }
-
-    .social-link {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      color: #333;
-      font-size: 16px;
-      font-weight: bold;
-      background: white;
-      padding: 6px 12px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-      transition: transform 0.2s, background 0.2s;
-    }
-
-    .social-link:hover {
-      transform: scale(1.08);
-      background: #f5f5f5;
-    }
-
-    .social-link img {
-      width: 20px;
-      height: 20px;
-      margin-right: 6px;
-    }
-
-    /* Кнопки */
-    .buttons {
-      position: fixed;
-      bottom: 100px;   /* увеличил отступ */
-      left: 100px;     /* увеличил отступ */
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      z-index: 1000;
-    }
-
-    .btn {
-      background: #000000cc; /* чёрный фон */
-      color: white;
-      border: 1px solid white; /* белая граница */
-      padding: 12px 40px; /* увеличена длина (40px) */
-      border-radius: 6px;
-      font-size: 16px;
-      font-weight: bold;
+      top: 15px;
+      left: 15px;
+      font-size: 28px;
       cursor: pointer;
-      transition: all 0.25s ease;
+      color: white;
+      z-index: 1100;
     }
 
-    /* Эффект hover */
-    .btn:hover {
-      background: white;
-      color: black;
-      border: 1px solid black;
-      transform: scale(1.05);
+    /* Сайд-меню */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -250px; /* спрятано */
+      width: 250px;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      color: white;
+      padding-top: 60px;
+      transition: left 0.3s ease;
+      z-index: 1000;
     }
-  </style>
-</head>
-<body>
-  <!-- Соцсети -->
-  <div class="social-bar">
-    <a href="https://wa.me/905395117251" target="_blank" class="social-link">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-      WhatsApp
-    </a>
-    <a href="https://instagram.com/ahmet.arslanow" target="_blank" class="social-link">
-      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
-      Instagram
-    </a>
-    <a href="mailto:fcomp170@gmail.com" target="_blank" class="social-link">
-      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail">
-      Gmail
-    </a>
-  </div>
 
-  <!-- Три кнопки -->
-  <div class="buttons">
-    <button class="btn">Randevu</button>
-    <button class="btn">Kayit olmak</button>
-    <button class="btn">Info</button>
-  </div>
-</body>
-</html>
-
-
-
-
-
+    .side-menu a {
+      display: block;
+      padding: 15px 20px;
+      text-decoration: none;
+      color: white;
+      border-bottom: 1px solid #444;
+      transition: 0.3s;
+    }
