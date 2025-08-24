@@ -1,16 +1,18 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       height: 100vh;
       background: url("https://univer-cons.github.io/ahmet/back.png") no-repeat center center fixed;
       background-size: cover;
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
       overflow-x: hidden;
     }
 
@@ -24,6 +26,7 @@
       background: rgba(0,0,0,0.9);
       transition: 0.3s;
       padding-top: 60px;
+      z-index: 1000;
     }
     .sidebar a {
       display: block;
@@ -51,32 +54,62 @@
       z-index: 1001;
     }
 
-    /* Кнопка снизу */
+    /* Кнопка снизу по центру */
     .open-btn {
       position: fixed;
-      bottom: 40px;
+      bottom: 120px;
       left: 50%;
       transform: translateX(-50%);
       background: black;
       color: white;
-      border: 1px solid white;
-      padding: 12px 24px;
-      font-size: 18px;
+      border: 2px solid white;
+      padding: 15px 40px;
+      font-size: 20px;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      border-radius: 50px; /* овальная форма */
       z-index: 1001;
+      font-weight: 500;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
     }
     .open-btn:hover {
       background: white;
       color: black;
-      border: 1px solid black;
+      border: 2px solid black;
     }
     .arrow {
       font-weight: bold;
     }
+
+    /* Иконки снизу */
+    .social-icons {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 25px;
+      z-index: 1001;
+    }
+    .social-icons a {
+      color: white;
+      font-size: 26px;
+      text-decoration: none;
+      transition: transform 0.3s, color 0.3s;
+    }
+    .social-icons a:hover {
+      color: #25D366; /* для WhatsApp */
+      transform: scale(1.2);
+    }
+    .social-icons a.instagram:hover {
+      color: #E1306C;
+    }
+    .social-icons a.gmail:hover {
+      color: #EA4335;
+    }
   </style>
+  <!-- Подключаем иконки -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -85,15 +118,22 @@
 
   <!-- Сайдбар -->
   <div id="mySidebar" class="sidebar">
-    <a href="#">Randevu</a>
-    <a href="#">Kabul Mektubu</a>
-    <a href="#">Info</a>
+    <a href="#">Рандеву</a>
+    <a href="#">Кайет</a>
+    <a href="#">Информация</a>
   </div>
 
   <!-- Кнопка снизу -->
   <button class="open-btn" onclick="toggleMenu()">
-    Ileri <span class="arrow">→</span>
+    Открыть Меню <span class="arrow">→</span>
   </button>
+
+  <!-- Социальные иконки -->
+  <div class="social-icons">
+    <a href="https://wa.me/905xxxxxxxxx" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://instagram.com/yourprofile" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+    <a href="mailto:yourmail@gmail.com" class="gmail"><i class="fas fa-envelope"></i></a>
+  </div>
 
   <script>
     function toggleMenu() {
