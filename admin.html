@@ -14,112 +14,92 @@
       overflow-x: hidden;
     }
 
-    /* Бургер */
-    .burger {
+    /* Сайдбар */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      transition: 0.3s;
+      padding-top: 60px;
+    }
+    .sidebar a {
+      display: block;
+      padding: 15px;
+      color: white;
+      text-decoration: none;
+      border-bottom: 1px solid #444;
+    }
+    .sidebar a:hover {
+      background: white;
+      color: black;
+    }
+    .sidebar.active {
+      left: 0;
+    }
+
+    /* Гамбургер */
+    .hamburger {
       position: fixed;
       top: 15px;
       left: 15px;
       font-size: 28px;
       cursor: pointer;
       color: white;
-      z-index: 1100;
+      z-index: 1001;
     }
 
-    /* Сайд-меню */
-    .side-menu {
+    /* Кнопка снизу */
+    .open-btn {
       position: fixed;
-      top: 0;
-      left: -250px; /* спрятано */
-      width: 250px;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.9);
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: black;
       color: white;
-      padding-top: 60px;
-      transition: left 0.3s ease;
-      z-index: 1000;
+      border: 1px solid white;
+      padding: 12px 24px;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 1001;
     }
-
-    .side-menu a {
-      display: block;
-      padding: 15px 20px;
-      text-decoration: none;
-      color: white;
-      border-bottom: 1px solid #444;
-      transition: 0.3s;
-    }
-
-    .side-menu a:hover {
+    .open-btn:hover {
       background: white;
       color: black;
+      border: 1px solid black;
     }
-
-    /* Соцсети снизу */
-    .social-bar {
-      position: fixed;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 10px;
-      z-index: 900;
-    }
-
-    /* На компьютере — снизу */
-    .social-bar {
-      bottom: 10px;
-    }
-
-    /* На телефоне иконки меньше */
-    @media (max-width: 600px) {
-      .social-bar img {
-        width: 20px;
-        height: 20px;
-      }
-    }
-
-    .social-link img {
-      width: 28px;
-      height: 28px;
-      transition: transform 0.2s;
-    }
-    .social-link img:hover {
-      transform: scale(1.2);
+    .arrow {
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <!-- Бургер -->
-  <div class="burger" onclick="toggleMenu()">☰</div>
 
-  <!-- Сайд-меню -->
-  <div class="side-menu" id="sideMenu">
-    <a href="#">1. Randevu</a>
-    <a href="#">2. Kabul Mektubu kayit</a>
-    <a href="#">3. Info</a>
+  <!-- Гамбургер -->
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+  <!-- Сайдбар -->
+  <div id="mySidebar" class="sidebar">
+    <a href="#">Randevu</a>
+    <a href="#">Kabul Mektubu</a>
+    <a href="#">Info</a>
   </div>
 
-  <!-- Соцсети -->
-  <div class="social-bar">
-    <a href="https://wa.me/905395117251" target="_blank" class="social-link">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-    </a>
-    <a href="https://instagram.com/ahmet.arslanow" target="_blank" class="social-link">
-      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
-    </a>
-    <a href="mailto:fcomp170@gmail.com" target="_blank" class="social-link">
-      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail">
-    </a>
-  </div>
+  <!-- Кнопка снизу -->
+  <button class="open-btn" onclick="toggleMenu()">
+    Ileri <span class="arrow">→</span>
+  </button>
 
   <script>
     function toggleMenu() {
-      const menu = document.getElementById("sideMenu");
-      if (menu.style.left === "0px") {
-        menu.style.left = "-250px";
-      } else {
-        menu.style.left = "0px";
-      }
+      document.getElementById("mySidebar").classList.toggle("active");
     }
   </script>
+
 </body>
 </html>
