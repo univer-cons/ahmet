@@ -57,28 +57,28 @@
     /* Кнопка снизу по центру */
     .open-btn {
       position: fixed;
-      bottom: 120px;
+      bottom: 100px; /* выше иконок */
       left: 50%;
       transform: translateX(-50%);
       background: black;
       color: white;
       border: 2px solid white;
-      padding: 15px 40px;
-      font-size: 20px;
+      padding: 15px 35px;
+      font-size: 18px;
       cursor: pointer;
-      border-radius: 50px; /* овальная форма */
+      border-radius: 50px;
       z-index: 1001;
       font-weight: 500;
-      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap; /* всегда в одну строку */
       transition: all 0.3s ease;
     }
     .open-btn:hover {
       background: white;
       color: black;
       border: 2px solid black;
-    }
-    .arrow {
-      font-weight: bold;
     }
 
     /* Иконки снизу */
@@ -98,8 +98,10 @@
       transition: transform 0.3s, color 0.3s;
     }
     .social-icons a:hover {
-      color: #25D366; /* для WhatsApp */
       transform: scale(1.2);
+    }
+    .social-icons a.whatsapp:hover {
+      color: #25D366;
     }
     .social-icons a.instagram:hover {
       color: #E1306C;
@@ -109,7 +111,7 @@
     }
   </style>
   <!-- Подключаем иконки -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
@@ -118,21 +120,21 @@
 
   <!-- Сайдбар -->
   <div id="mySidebar" class="sidebar">
-    <a href="#">Рандеву</a>
-    <a href="#">Кайет</a>
-    <a href="#">Информация</a>
+    <a href="#">Randevu</a>
+    <a href="#">Kabul mektubu</a>
+    <a href="#">Info</a>
   </div>
 
   <!-- Кнопка снизу -->
   <button class="open-btn" onclick="toggleMenu()">
-    Открыть Меню <span class="arrow">→</span>
+    Randevu <span class="arrow">→</span>
   </button>
 
   <!-- Социальные иконки -->
   <div class="social-icons">
-    <a href="https://wa.me/905xxxxxxxxx" target="_blank"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://instagram.com/yourprofile" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
-    <a href="mailto:yourmail@gmail.com" class="gmail"><i class="fas fa-envelope"></i></a>
+    <a href="https://wa.me/905395117251" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://instagram.com/ahmet.arslanow" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+    <a href="mailto:fcomp@gmail.com" class="gmail"><i class="fas fa-envelope"></i></a>
   </div>
 
   <script>
