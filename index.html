@@ -1,117 +1,261 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ahmet Consulting — Регистрация</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yapay Zeka Biyometrik Fotoğraf Dönüştürücü</title>
+    <!-- Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
     <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f3f3f3;
-      display: flex;
-      justify-content: center;
-      align-items: center; 
-      height: 100vh;
-    }
-    form {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      width: 100%;
-      max-width: 500px;
-    }
-    input, select, textarea, button {
-      width: 100%;
-      margin-bottom: 15px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-sizing: border-box;
-    }
-    button {
-      background: #0052D4;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #003f9e;
-    }
-     footer {
-  position: fixed;
-  bottom: 15px;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  font-size: 14px;
-  font-family: Arial, sans-serif;
-  color: Black;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.8); /* делает текст читаемым на фоне */
-  z-index: 9999; /* поверх всего */
-  pointer-events: none; /* чтобы не мешал кликам */
-}
-
-  </style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+            min-height: 100vh;
+        }
+        /* Özel stil: Butonlar için güzel bir görsel */
+        .btn-primary {
+            background-image: linear-gradient(to right, #4F46E5 0%, #6366F1  51%, #4F46E5  100%);
+            margin: 10px;
+            padding: 12px 40px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;
+            box-shadow: 0 4px 15px 0 rgba(69, 90, 100, 0.75);
+            border-radius: 9999px;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-position: right center; /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+        }
+        .btn-secondary {
+            background-color: #F3F4F6;
+            color: #4B5563;
+            padding: 10px 20px;
+            border-radius: 9999px;
+            transition: background-color 0.3s;
+            font-weight: 600;
+        }
+        .btn-secondary:hover {
+            background-color: #E5E7EB;
+        }
+    </style>
 </head>
-<body>
-  <div class="background"></div>
+<body class="flex flex-col items-center justify-center p-4">
 
-  <form id="form">
-    <h2>Kayıt</h2>
-    <input type="email" id="email" placeholder="Email" required />
-    <input type="text" id="name" placeholder="Ad" required />
-    <input type="tel" id="phone" placeholder="Telefon" required />
-    <button type="submit">Kayıt olmak</button>
-  </form>
+    <div class="bg-white p-6 md:p-10 rounded-xl shadow-2xl w-full max-w-2xl">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">
+            Yapay Zeka Biyometrik Fotoğraf Dönüştürücü
+        </h1>
+        <p class="text-gray-600 mb-8 text-center">
+            Fotoğrafınızı yükleyin, kıyafetinizi seçin ve yapay zeka ile biyometrik standartlarda, sadece omuzdan yukarısını gösteren yeni bir fotoğraf oluşturun.
+        </p>
 
-  <script type="module">
-    // Firebase CDN
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
-    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js";
+        <!-- INPUT SECTION --><div class="space-y-6">
+            <!-- 1. FOTOĞRAF YÜKLEME --><div>
+                <label for="photo-upload" class="block text-sm font-medium text-gray-700 mb-2">1. Kendi Fotoğrafınızı Yükleyin (Yüzünüz Net ve Önden Olsun)</label>
+                <input type="file" id="photo-upload" accept="image/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-600 hover:file:bg-indigo-100" />
+                <p id="file-error" class="text-red-500 text-xs mt-1 hidden">Lütfen bir fotoğraf yükleyin.</p>
+            </div>
+            
+            <!-- 2. KIYAFET SEÇİMİ --><div>
+                <label for="outfit-select" class="block text-sm font-medium text-gray-700 mb-2">2. Giymek İstediğiniz Kıyafeti Seçin</label>
+                <select id="outfit-select" class="mt-1 block w-full py-3 px-4 border border-gray-300 bg-white rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <option value="a professional business suit">Takım Elbise</option>
+                    <option value="a plain t-shirt">T-shirt</option>
+                    <option value="a plain black shirt">Siyah Gömlek</option>
+                </select>
+            </div>
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyDMGZ1XtGWi4Cbo5nhhB2eQkcXTVU3aYk0",
-      authDomain: "ahmet-consulting.firebaseapp.com",
-      projectId: "ahmet-consulting",
-      storageBucket: "ahmet-consulting.appspot.com",
-      messagingSenderId: "253579961791",
-      appId: "1:253579961791:web:738c1277d865069a22fdc5",
-      measurementId: "G-KHQYBLGMN5"
-    };
+            <!-- 3. OLUŞTUR BUTONU --><div class="pt-4 flex justify-center">
+                <button id="generate-button" class="btn-primary" onclick="generateImage()">
+                    GÖRÜNTÜ OLUŞTUR
+                </button>
+            </div>
+        </div>
 
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+        <!-- OUTPUT SECTION --><div id="output-area" class="mt-10 text-center">
+            <div id="loading-indicator" class="hidden flex flex-col items-center">
+                <svg class="animate-spin -ml-1 mr-3 h-8 w-8 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <p class="mt-3 text-indigo-600 font-semibold">Görüntü Oluşturuluyor, Lütfen Bekleyin...</p>
+            </div>
 
-    async function handleSubmit(e) {
-      e.preventDefault();
+            <div id="result-container" class="mt-6 hidden">
+                <h2 class="text-xl font-bold text-gray-800 mb-4">Oluşturulan Görüntü</h2>
+                <img id="generated-image" src="" alt="Oluşturulan Yapay Zeka Görüntüsü" class="rounded-xl shadow-lg w-full max-h-96 object-contain mx-auto border-4 border-indigo-200">
+                
+                <!-- İNDİRME BUTONU -->
+                <button id="download-button" class="btn-secondary mt-4" onclick="downloadImage()">
+                    Görüntüyü İndir
+                </button>
+            </div>
+            
+            <p id="error-message" class="text-red-600 mt-4 hidden font-medium"></p>
+        </div>
 
-      const email = document.getElementById("email").value;
-      const name = document.getElementById("name").value;
-      const phone = document.getElementById("phone").value;
+    </div>
 
-      try {
-        await addDoc(collection(db, "registrations"), {
-          email,
-          name,
-          phone,
-          createdAt: new Date()
-        });
+    <script>
+        // --- API & Config Setup ---
+        const apiKey = "AIzaSyC_DDKM6Euu-biGefDVTrWx7SqFr7GtZwQ"; 
+        // Kullanılacak model: Görüntü düzenleme ve kimlik koruma görevleri için en uygun model.
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent?key=${apiKey}`;
 
-        alert("✅ Herşey kayıt edılmiştır!!");
-        window.location.href = "admin.html";
-      } catch (err) {
-        alert("❌ Ошибка при регистрации: " + err.message);
-      }
-    }
+        const uploadInput = document.getElementById('photo-upload');
+        const outfitSelect = document.getElementById('outfit-select');
+        const generateButton = document.getElementById('generate-button');
+        const loadingIndicator = document.getElementById('loading-indicator');
+        const resultContainer = document.getElementById('result-container');
+        const generatedImage = document.getElementById('generated-image');
+        const errorMessage = document.getElementById('error-message');
+        const fileError = document.getElementById('file-error');
 
-    window.addEventListener("DOMContentLoaded", () => {
-      document.getElementById("form").addEventListener("submit", handleSubmit);
-    });
-  </script>
+        // Helper function to convert File to Base64
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result.split(',')[1]); // Sadece Base64 kısmı
+                reader.onerror = error => reject(error);
+            });
+        }
+        
+        // Helper function to show/hide elements
+        function setVisibility(element, isVisible) {
+            element.classList.toggle('hidden', !isVisible);
+        }
+
+        /**
+         * Görüntü oluşturma işlemini başlatan ana fonksiyon.
+         */
+        async function generateImage() {
+            const file = uploadInput.files[0];
+            const selectedOutfit = outfitSelect.value;
+
+            // Giriş doğrulama
+            if (!file) {
+                setVisibility(fileError, true);
+                return;
+            }
+            setVisibility(fileError, false);
+            
+            // UI durumunu güncelle
+            setVisibility(resultContainer, false);
+            setVisibility(errorMessage, false);
+            setVisibility(loadingIndicator, true);
+            generateButton.disabled = true;
+
+            try {
+                // 1. Fotoğrafı Base64'e çevir
+                const base64Data = await fileToBase64(file);
+                const fileMimeType = file.type;
+
+                // 2. API için gerekli prompt'u oluştur
+                // PROMPT GÜNCELLENDİ: Daha sıkı biyometrik kırpma (baş ve küçük bir omuz kısmı) vurgulandı.
+                const userQuery = `Transform the person in the input image to wear ${selectedOutfit}. 
+                                   The image must strictly adhere to international passport/biometric photo standards: plain white background, head centered, and tightly cropped to show only the head and a small portion of the upper shoulders. 
+                                   CRITICAL: Preserve the face, hair, and identity exactly from the original photo. 
+                                   Ensure the final output is photorealistic and meets biometric photo requirements (front-facing, clear, neutral expression).`;
+
+                const payload = {
+                    contents: [
+                        {
+                            role: "user",
+                            parts: [
+                                { text: userQuery },
+                                {
+                                    inlineData: {
+                                        mimeType: fileMimeType,
+                                        data: base64Data,
+                                    },
+                                },
+                            ],
+                        },
+                    ],
+                    generationConfig: {
+                        responseModalities: ["TEXT", "IMAGE"],
+                    },
+                };
+                
+                // 3. API Çağrısı (Exponential Backoff ile)
+                const maxRetries = 5;
+                let lastError = null;
+                let response = null;
+
+                for (let attempt = 0; attempt < maxRetries; attempt++) {
+                    try {
+                        response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        if (response.ok) {
+                            break; // Başarılı, döngüyü bitir
+                        } else {
+                            throw new Error(`API çağrısı başarısız oldu. Durum: ${response.status}`);
+                        }
+                    } catch (error) {
+                        lastError = error;
+                        console.error(`Attempt ${attempt + 1} failed:`, error);
+                        if (attempt < maxRetries - 1) {
+                            // Exponential backoff
+                            const delay = Math.pow(2, attempt) * 1000 + Math.random() * 1000;
+                            await new Promise(resolve => setTimeout(resolve, delay));
+                        }
+                    }
+                }
+
+                if (!response || !response.ok) {
+                    throw lastError || new Error("Maksimum yeniden deneme sayısına ulaşıldı veya bilinmeyen bir hata oluştu.");
+                }
+
+                const result = await response.json();
+                
+                // Görüntü verilerini çıkar
+                const base64Image = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData)?.inlineData?.data;
+
+                if (base64Image) {
+                    const imageUrl = `data:image/png;base64,${base64Image}`;
+                    generatedImage.src = imageUrl;
+                    setVisibility(resultContainer, true);
+                } else {
+                    throw new Error("API'den geçerli bir görüntü verisi alınamadı. Lütfen daha net bir fotoğraf deneyin.");
+                }
+
+            } catch (error) {
+                console.error("Görüntü oluşturma hatası:", error);
+                errorMessage.textContent = `Hata: Görüntü oluşturulamadı. Lütfen fotoğrafınızı kontrol edin ve tekrar deneyin. (${error.message.substring(0, 100)}...)`;
+                setVisibility(errorMessage, true);
+            } finally {
+                // UI durumunu sıfırla
+                setVisibility(loadingIndicator, false);
+                generateButton.disabled = false;
+            }
+        }
+
+        /**
+         * Oluşturulan görüntüyü indirmek için fonksiyon.
+         */
+        function downloadImage() {
+            const imageUrl = generatedImage.src;
+            if (imageUrl && imageUrl !== '') {
+                const link = document.createElement('a');
+                link.href = imageUrl;
+                // İndirme dosya adını belirle
+                const outfitText = outfitSelect.options[outfitSelect.selectedIndex].text.replace(/\s/g, '_');
+                link.download = `biyometrik_foto_${outfitText}.png`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        }
+    </script>
 </body>
-  <footer>
-  <p>© 2025 Ahmet Consulting. Все права защищены.</p>
-  </footer>
-
 </html>
